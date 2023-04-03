@@ -1,2 +1,6 @@
 # azl-kubernetes
-Azure Learning -  AKS 
+
+## Objective: Repo destinaded for the Azure Kubernetes Service
+## Stack:
+- AKS
+- Kubernetes

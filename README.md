@@ -6,4 +6,5 @@
 - Kubernetes
 
 Big Picture: 
-![image](https://user-images.githubusercontent.com/41006627/230421960-0c64636c-3785-4729-9000-3d74b229441e.png)
+![image](https://user-images.githubusercontent.com/41006627/230422775-5fa201a0-121a-4db6-820f-020b142e2c65.png)
+

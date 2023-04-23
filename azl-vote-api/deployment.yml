@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azl-vote-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: azl-vote-api
+  template:
+    metadata:
+      name: azl-vote-api
+      labels:
+        app: azl-vote-api
+        aadpodidbinding: azl-pod-identity-binding-selector
+    spec:
+      containers:
+        - name: azl-vote-api
+          image: docker.io/caioduarte/azl-vote-api:latest
+          ports:
+            - containerPort: 80
+          env:
+          - name: DB_CONNECTION
+            valueFrom:
+              secretKeyRef:
+                name: azl-vote-api-secrets
+                key: DB-CONNECTION
+          volumeMounts:
+          - name: secrets-store-inline
+            mountPath: "/mnt/secrets-store"
+            readOnly: true
+      volumes:
+      - name: secrets-store-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: spc-azl-vote-api

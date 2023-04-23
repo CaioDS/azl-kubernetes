@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: azl-vote-api-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: azl-vote-api
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: sqlserver
+    protocol: TCP
+    port: 1433
+    targetPort: 1433

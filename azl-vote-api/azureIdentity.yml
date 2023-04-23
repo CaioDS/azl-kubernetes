@@ -1,0 +1,16 @@
+apiVersion: aadpodidentity.k8s.io/v1
+kind: AzureIdentity
+metadata:
+  name: "azl-identity"
+spec:
+  type: 0
+  resourceID: /subscriptions/3d186584-9824-4639-abef-016aee3c06cd/resourcegroups/aks/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azl-identity
+  clientID: "3b4c8957-d12b-435c-9138-504aa6bec6cd"
+---
+apiVersion: aadpodidentity.k8s.io/v1
+kind: AzureIdentityBinding
+metadata:
+  name: azl-pod-identity-binding
+spec:
+  azureIdentity: "azl-identity"      
+  selector: azl-pod-identity-binding-selector
